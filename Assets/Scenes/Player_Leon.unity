@@ -224,6 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1539635483}
   - component: {fileID: 1539635482}
+  - component: {fileID: 1539635484}
   m_Layer: 0
   m_Name: Closet
   m_TagString: Closet
@@ -299,6 +300,51 @@ Transform:
   - {fileID: 2041527298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1539635484
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539635481}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.04567176, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0913434, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2041527297
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,8 +371,8 @@ Transform:
   m_GameObject: {fileID: 2041527297}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0052578244, y: 0.0051793037, z: -0.16040237, w: 0.9870242}
-  m_LocalPosition: {x: 0.92, y: -0.55, z: 0}
-  m_LocalScale: {x: 1.0017767, y: 0.15457468, z: 1}
+  m_LocalPosition: {x: 0.9200001, y: -0.55, z: 0}
+  m_LocalScale: {x: 1.0017769, y: 0.15457466, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1539635483}
@@ -394,10 +440,6 @@ PrefabInstance:
     - target: {fileID: 838893378346107379, guid: 8f1041bd24b7d714b91eafbb2ab6559b, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164061689957861332, guid: 8f1041bd24b7d714b91eafbb2ab6559b, type: 3}
-      propertyPath: rotationSpeed
-      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8067407891843109431, guid: 8f1041bd24b7d714b91eafbb2ab6559b, type: 3}
       propertyPath: m_LocalPosition.x
