@@ -1,12 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] Transform target;
-
-    NavMeshAgent agent;
-
+    public GameObject destination;
+    private NavMeshAgent agent;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -16,6 +16,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(target.position);
+        agent.destination = destination.transform.position;
     }
 }
