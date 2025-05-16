@@ -10,6 +10,6 @@ public class GameOver : MonoBehaviour {
     }
 
     public void ExitButton() {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("Kostas Main meny shity shit shit let it work");
     }
 }
