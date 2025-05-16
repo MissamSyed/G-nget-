@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
 
             screenBoundary = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
             transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundary.x, screenBoundary.x), Mathf.Clamp(transform.position.y, -screenBoundary.y, screenBoundary.y));
+        } 
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 }

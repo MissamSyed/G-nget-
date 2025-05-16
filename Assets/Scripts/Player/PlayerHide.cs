@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerHide : MonoBehaviour
 {
+    
     public bool _playerCanMove = true;
     public bool _isTouchingCloset = false;
     public bool _playerIsHiding = false;
