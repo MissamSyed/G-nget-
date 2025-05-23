@@ -1,36 +1,42 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NavmeshMovement : MonoBehaviour
 {
-    public Camera mainCamera;
     private NavMeshAgent agent;
+    private Vector3 movementInput;
+
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main;
-        }
     }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // Ta in input
+        float h = Input.GetAxisRaw("Horizontal"); // A/D eller vänster/höger
+        float v = Input.GetAxisRaw("Vertical");   // W/S eller upp/ner
+
+        movementInput = new Vector3(h, v, 0f).normalized;
+
+        if (movementInput != Vector3.zero)
         {
-            MoveToMouseClick();
-        }   
+            MoveWithKeyboard();
+        }
     }
 
-    void MoveToMouseClick()
+
+    void MoveWithKeyboard()
     {
-        Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Bestäm ny position baserat på input
+        Vector3 targetPosition = transform.position + movementInput;
 
         NavMeshHit hit;
-        if(NavMesh.SamplePosition(mouseWorldPosition, out hit, 0.5f, NavMesh.AllAreas))
+        // Kontrollera om positionen är på navmesh
+        if (NavMesh.SamplePosition(targetPosition, out hit, 1.0f, NavMesh.AllAreas))
         {
             agent.SetDestination(hit.position);
         }
