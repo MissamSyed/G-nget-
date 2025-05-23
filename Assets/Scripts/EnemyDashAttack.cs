@@ -8,16 +8,20 @@ public class EnemyDashAttack : MonoBehaviour
     public float detectionRange = 6f;
     public float dashSpeed = 15f;
     public float dashDuration = 0.4f;
+    public float dashCooldown = 2f;
 
     private Rigidbody2D rb;
-    private bool hasDashed = false;
+    private SpriteRenderer spriteRenderer;
     private bool isDashing = false;
+
     private float dashTime = 0f;
+    private float cooldownTimer = 0f;
     private Vector2 dashDirection;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -26,7 +30,13 @@ public class EnemyDashAttack : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        if (!hasDashed && distance <= detectionRange)
+        
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+
+        if (!isDashing && cooldownTimer <= 0 && distance <= detectionRange)
         {
             dashDirection = (player.position - transform.position).normalized;
             StartDash();
@@ -54,20 +64,18 @@ public class EnemyDashAttack : MonoBehaviour
     {
         isDashing = true;
         dashTime = dashDuration;
-        hasDashed = true;
+        cooldownTimer = dashCooldown;
+
         
+        spriteRenderer.enabled = false;
     }
 
     void StopDash()
     {
         isDashing = false;
         rb.velocity = Vector2.zero;
-        
-    }
 
-    
-    public void ResetDash()
-    {
-        hasDashed = false;
+        
+        spriteRenderer.enabled = true;
     }
 }
