@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Closet
   - Enemy
+  - Undefined
+  - PickupShotgun
+  - PickupGun
+  - Pickup
   layers:
   - Default
   - TransparentFX
