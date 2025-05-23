@@ -45,8 +45,8 @@ public class PlayerMovement : MonoBehaviour
                 rb.angularVelocity = 0;
             }
 
-            screenBoundary = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundary.x, screenBoundary.x), Mathf.Clamp(transform.position.y, -screenBoundary.y, screenBoundary.y));
+           //screenBoundary = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+            //transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundary.x, screenBoundary.x), Mathf.Clamp(transform.position.y, -screenBoundary.y, screenBoundary.y));
         } 
         else
         {

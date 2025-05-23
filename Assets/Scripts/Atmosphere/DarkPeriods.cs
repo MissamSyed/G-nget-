@@ -10,6 +10,10 @@ public class DarkPeriods : MonoBehaviour
     private Color cameraBackgroundColor;
     private Coroutine flickerCoroutine;
 
+    public GameObject environmentBackground;
+    private SpriteRenderer backgroundSprite;
+    private Color backgroundSpriteColor;
+
     public bool GetDarkMode()
     {
         return _darkMode;
@@ -17,8 +21,12 @@ public class DarkPeriods : MonoBehaviour
 
     private void Start()
     {
+
         camera = Camera.main;
         cameraBackgroundColor = camera.backgroundColor;
+
+        backgroundSprite = environmentBackground.GetComponent<SpriteRenderer>();
+        backgroundSpriteColor = backgroundSprite.color;
         StartCoroutine(ColorLoop());
     }
 
@@ -36,11 +44,11 @@ public class DarkPeriods : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
             StopCoroutine(flickerCoroutine);
-            camera.backgroundColor = Color.black;
+            backgroundSprite.color = Color.black;
             _darkMode = true;
 
             yield return new WaitForSeconds(2f);
-            camera.backgroundColor = cameraBackgroundColor;
+            backgroundSprite.color = backgroundSpriteColor;
             _darkMode = false;
         }
     }
@@ -49,9 +57,9 @@ public class DarkPeriods : MonoBehaviour
     {
         while (true)
         {
-            camera.backgroundColor = Color.gray;
+            backgroundSprite.color = Color.gray;
             yield return new WaitForSeconds(flickTime);
-            camera.backgroundColor = cameraBackgroundColor;
+            backgroundSprite.color = backgroundSpriteColor;
             yield return new WaitForSeconds(flickTime);
         }
     }
