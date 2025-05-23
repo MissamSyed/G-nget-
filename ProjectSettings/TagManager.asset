@@ -5,9 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Closet
-  - Enemy
-  - Key
-  - Exit
   layers:
   - Default
   - TransparentFX

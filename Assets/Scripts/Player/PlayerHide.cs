@@ -22,11 +22,6 @@ public class PlayerHide : MonoBehaviour
         return _playerCanMove;
     }
 
-    public bool PlayerIsHiding()
-    {
-        return _playerIsHiding;
-    }
-
     void PartsInvisible(Transform doorTransform, bool value)
     {
         _playerSprite.enabled = value;
