@@ -33,6 +33,7 @@ public class GrabObject : MonoBehaviour
         {
             Debug.Log("You win!");
             _textLabelObject.SetActive(false);
+            SceneManager.LoadScene(3);
         }
     }
 
