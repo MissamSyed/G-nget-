@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 1805395510}
   - component: {fileID: 1805395509}
   m_Layer: 0
-  m_Name: 9-Sliced
+  m_Name: Exit Key
   m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

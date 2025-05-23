@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DarkPeriods : MonoBehaviour
 {
+    public float _perDarkPeriod = 5f;
+
     private bool _darkMode = false;
 
     private Camera camera;
@@ -34,7 +36,7 @@ public class DarkPeriods : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(_perDarkPeriod);
             flickerCoroutine = StartCoroutine(LightFlicker(0.2f));
             yield return new WaitForSeconds(2f);
 

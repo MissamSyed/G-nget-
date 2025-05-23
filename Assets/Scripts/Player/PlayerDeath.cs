@@ -26,7 +26,7 @@ public class PlayerDeath : MonoBehaviour
         {
             if (playerHideScript.PlayerIsHiding() == false)
             {
-                PlayerDie();
+                PlayerDie(0);
             }
         }
     }
@@ -35,14 +35,13 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            PlayerDie();
+            PlayerDie(2);
         }
     }
 
-    void PlayerDie()
+    void PlayerDie(int sceneNumber)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(2);
-        //SceneManager.LoadScene(currentSceneIndex);
+        SceneManager.LoadScene(sceneNumber);
+        
     }
 }
