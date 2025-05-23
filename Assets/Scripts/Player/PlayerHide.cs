@@ -4,23 +4,58 @@ using UnityEngine;
 
 public class PlayerHide : MonoBehaviour
 {
-    private bool isTouchingCloset = false;
-    private GameObject chosenCloset;
+    
+    public bool _playerCanMove = true;
+    public bool _isTouchingCloset = false;
+    public bool _playerIsHiding = false;
+
+    public GameObject _chosenCloset;
+
+    [SerializeField] SpriteRenderer _playerSprite;
 
     void Start()
     {
-
+        
     }
-
-    void HideInCloset()
+    public bool CanMove()
     {
-
+        return _playerCanMove;
     }
+
+    public bool PlayerIsHiding()
+    {
+        return _playerIsHiding;
+    }
+
+    void PartsInvisible(Transform doorTransform, bool value)
+    {
+        _playerSprite.enabled = value;
+        doorTransform.gameObject.SetActive(value);
+    }
+
     void OnInteract()
     {
-        if (isTouchingCloset)
+        if (_isTouchingCloset)
         {
+            Transform doorTransform = _chosenCloset.transform.Find("Door");
+            if (_playerIsHiding == false)
+            {
+                Debug.Log("Player is hiding!");
 
+                PartsInvisible(doorTransform, false);
+
+                _playerIsHiding = true;
+                _playerCanMove = false;
+            }
+            else
+            {
+                Debug.Log("Player is exposed!");
+
+                PartsInvisible(doorTransform, true);
+
+                _playerIsHiding = false;
+                _playerCanMove = true;
+            }
         }
     }
 
@@ -29,8 +64,8 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.CompareTag("Closet"))
         {
             Debug.Log("Closet touched!");
-            chosenCloset = collision.gameObject;
-            isTouchingCloset = true;
+            _chosenCloset = collision.gameObject;
+            _isTouchingCloset = true;
         }
     }
 
@@ -39,8 +74,10 @@ public class PlayerHide : MonoBehaviour
         if (collision.gameObject.CompareTag("Closet"))
         {
             Debug.Log("Closet left!");
-            chosenCloset = null;
-            isTouchingCloset = false;
+            
+            _chosenCloset = null;
+            _isTouchingCloset = false;
+            _playerIsHiding = false;
         }
     }
 
