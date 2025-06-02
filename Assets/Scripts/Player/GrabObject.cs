@@ -8,16 +8,21 @@ using UnityEngine.SceneManagement;
 public class GrabObject : MonoBehaviour
 {
     [SerializeField] GameObject _textLabelObject;
-    private TextMeshProUGUI _textLabel;
+
+    public GameObject _timeController;
+    public GameObject _newTimeController;
     public GameObject _keyObject;
 
     public bool _hasExitKey = false;
 
     private bool _isTouchingKey = false;
+    private TextMeshProUGUI _textLabel;
+    private GameTimer _timeControllerScript;
 
     private void Start()
     {
         _textLabel = _textLabelObject.GetComponent<TextMeshProUGUI>();
+        _timeControllerScript = _timeController.GetComponent<GameTimer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +39,12 @@ public class GrabObject : MonoBehaviour
             Debug.Log("You win!");
             _textLabelObject.SetActive(false);
             SceneManager.LoadScene(3);
+
+            //if (_newTimeController)
+            //{
+            //    TextMeshProUGUI newTextMesh = _newTimeController.GetComponent<TextMeshProUGUI>();
+            //    newTextMesh.text = _timeControllerScript.GetTimeInText();
+            //}
         }
     }
 
